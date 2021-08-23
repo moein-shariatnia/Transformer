@@ -6,9 +6,9 @@ class SelfAttention(nn.Module):
         super().__init__()
         self.embed_size = embed_size
         self.heads = heads
-        self.head_dim = embed_size // heads
+        self.head_dim = self.embed_size // self.heads
         assert (
-            self.head_dim * heads == embed_size
+            self.head_dim * self.heads == self.embed_size
         ), "Embed Size needs to be div by heads"
 
         self.values = nn.Linear(self.head_dim, self.head_dim, bias=False)
